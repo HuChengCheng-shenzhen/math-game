@@ -1,5 +1,29 @@
 # 部署指南
 
+## 🚀 快速自动化部署 (推荐)
+
+我们提供了一个自动化脚本，可以一键完成GitHub仓库创建和代码推送：
+
+```bash
+# 1. 确保脚本有执行权限
+chmod +x deploy-to-github.sh
+
+# 2. 运行部署脚本
+./deploy-to-github.sh
+```
+
+脚本将引导您完成：
+- GitHub仓库创建
+- 代码推送（支持HTTPS token和SSH两种方式）
+- GitHub Pages配置指导
+- 自动部署状态监控
+
+### 需要准备：
+1. **GitHub账号**
+2. **GitHub个人访问令牌**（需要repo权限）
+   - 生成地址：https://github.com/settings/tokens
+   - 权限选择：`repo`（完全控制仓库）
+
 ## 构建应用
 
 ```bash

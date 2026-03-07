@@ -1,0 +1,97 @@
+{
+  "app": {
+    "title": "Math Fun Land",
+    "subtitle": "Math Fun Land",
+    "description": "Math enlightenment game designed for children aged 3-6"
+  },
+  "game": {
+    "start": "Start Game",
+    "pause": "Pause",
+    "resume": "Resume",
+    "restart": "Restart",
+    "next": "Next Level",
+    "home": "Back to Home",
+    "settings": "Settings",
+    "help": "Help",
+    "score": "Score",
+    "level": "Level",
+    "difficulty": "Difficulty",
+    "easy": "Easy",
+    "medium": "Medium",
+    "hard": "Hard",
+    "correct": "Correct",
+    "incorrect": "Incorrect",
+    "selectNumber": "Select the correct number",
+    "countPatterns": "Count the patterns",
+    "correctAnswer": "Correct Answer",
+    "yourAnswer": "Your Answer",
+    "time": "Time",
+    "progress": "Progress"
+  },
+  "feedback": {
+    "excellent": "Excellent!",
+    "great": "Great!",
+    "good": "Good!",
+    "tryAgain": "Try again!",
+    "almost": "Almost there!",
+    "correct": "Correct!",
+    "incorrect": "Incorrect",
+    "hint": "Hint: Count how many?",
+    "autoAdvance": "Advancing to next level..."
+  },
+  "difficulty": {
+    "easyDesc": "Numbers 5-10, simple patterns",
+    "mediumDesc": "Numbers 5-15, medium patterns",
+    "hardDesc": "Numbers 5-20, complex patterns",
+    "adaptive": "Adaptive difficulty"
+  },
+  "patterns": {
+    "icecream": "Ice Cream",
+    "cookie": "Cookie",
+    "star": "Star",
+    "balloon": "Balloon",
+    "animal": "Animal"
+  },
+  "settings": {
+    "title": "Game Settings",
+    "language": "Language",
+    "sound": "Sound Effects",
+    "music": "Background Music",
+    "animation": "Animation",
+    "hintDuration": "Hint Display Time",
+    "autoAdvance": "Auto Advance After Correct",
+    "reset": "Reset to Default",
+    "save": "Save Settings",
+    "cancel": "Cancel"
+  },
+  "home": {
+    "welcome": "Welcome to Math Fun Land!",
+    "goal": "Game Goal",
+    "goal1": "Recognize numbers 5-20",
+    "goal2": "Establish quantity correspondence",
+    "goal3": "Develop observation and attention",
+    "goal4": "Learn from mistakes",
+    "features": "Game Features",
+    "feature1": "Cute ice cream, cookie patterns",
+    "feature2": "Intelligent difficulty adjustment system",
+    "feature3": "Friendly error hints",
+    "feature4": "Chinese and English bilingual support",
+    "ageGroup": "Suitable Age",
+    "age1": "3-4 years: Easy mode",
+    "age2": "4-5 years: Medium mode",
+    "age3": "5-6 years: Challenge mode",
+    "age4": "All ages: Happy learning",
+    "tip": "The game automatically adjusts difficulty based on child's performance, ensuring learning is both challenging and fun!"
+  },
+  "errors": {
+    "hint": "Count again! There are {{count}} in total!",
+    "countAgain": "Look carefully at the patterns",
+    "showAnswer": "Show correct answer"
+  },
+  "status": {
+    "consecutiveCorrect": "Consecutive Correct",
+    "consecutiveWrong": "Consecutive Wrong",
+    "accuracy": "Accuracy",
+    "totalRounds": "Total Rounds"
+  }
+}

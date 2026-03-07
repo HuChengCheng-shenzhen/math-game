@@ -1,0 +1,255 @@
+/* 反馈覆盖层 */
+.feedbackOverlay {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2000;
+  border-radius: 30px;
+  padding: 40px;
+  min-width: 350px;
+  max-width: 450px;
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 成功状态 */
+.feedback--success {
+  background: linear-gradient(135deg, #E8F5E9, #C8E6C9);
+  border: 5px solid #4CAF50;
+}
+
+/* 错误状态 */
+.feedback--error {
+  background: linear-gradient(135deg, #FFEBEE, #FFCDD2);
+  border: 5px solid #F44336;
+}
+
+/* 背景效果 */
+.backgroundEffects {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.confetti {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: #FF9800;
+  border-radius: 50%;
+  animation: confettiFall 2s linear infinite;
+}
+
+.confetti:nth-child(1) {
+  left: 10%;
+  animation-delay: 0s;
+  background: #4CAF50;
+}
+
+.confetti:nth-child(2) {
+  left: 30%;
+  animation-delay: 0.3s;
+  background: #2196F3;
+}
+
+.confetti:nth-child(3) {
+  left: 50%;
+  animation-delay: 0.6s;
+  background: #FF5722;
+}
+
+.confetti:nth-child(4) {
+  left: 70%;
+  animation-delay: 0.9s;
+  background: #9C27B0;
+}
+
+.confetti:nth-child(5) {
+  left: 90%;
+  animation-delay: 1.2s;
+  background: #FF9800;
+}
+
+@keyframes confettiFall {
+  0% {
+    transform: translateY(-100px) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* 反馈内容 */
+.feedbackContent {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  text-align: center;
+  width: 100%;
+}
+
+.emoji {
+  font-size: 64px;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+}
+
+.textContent {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: bold;
+  margin: 0;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.feedback--success .title {
+  color: #2E7D32;
+}
+
+.feedback--error .title {
+  color: #C62828;
+}
+
+.subtitle {
+  font-size: 20px;
+  margin: 0;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  line-height: 1.5;
+}
+
+.feedback--success .subtitle {
+  color: #388E3C;
+}
+
+.feedback--error .subtitle {
+  color: #D32F2F;
+}
+
+/* 进度条 */
+.progressBar {
+  height: 6px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 3px;
+  width: 100%;
+  margin-top: 20px;
+  overflow: hidden;
+  position: relative;
+}
+
+.progressBar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  border-radius: 3px;
+}
+
+.feedback--success .progressBar::after {
+  background: linear-gradient(90deg, #4CAF50, #81C784);
+}
+
+.feedback--error .progressBar::after {
+  background: linear-gradient(90deg, #F44336, #EF9A9A);
+}
+
+/* 关闭按钮 */
+.closeButton {
+  background: white;
+  border: none;
+  padding: 12px 32px;
+  border-radius: 50px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  margin-top: 20px;
+  min-width: 120px;
+}
+
+.feedback--success .closeButton {
+  color: #2E7D32;
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+}
+
+.feedback--success .closeButton:hover {
+  background: #E8F5E9;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(76, 175, 80, 0.4);
+}
+
+.feedback--error .closeButton {
+  color: #C62828;
+  box-shadow: 0 4px 12px rgba(244, 67, 54, 0.3);
+}
+
+.feedback--error .closeButton:hover {
+  background: #FFEBEE;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(244, 67, 54, 0.4);
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .feedbackOverlay {
+    min-width: 280px;
+    max-width: 90vw;
+    padding: 30px;
+  }
+
+  .emoji {
+    font-size: 48px;
+  }
+
+  .title {
+    font-size: 26px;
+  }
+
+  .subtitle {
+    font-size: 18px;
+  }
+
+  .closeButton {
+    padding: 10px 24px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .feedbackOverlay {
+    padding: 20px;
+  }
+
+  .emoji {
+    font-size: 40px;
+  }
+
+  .title {
+    font-size: 22px;
+  }
+
+  .subtitle {
+    font-size: 16px;
+  }
+}

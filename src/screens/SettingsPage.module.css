@@ -1,0 +1,460 @@
+/* 设置页面样式 */
+.settingsPage {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(135deg, #F3E5F5, #E1F5FE);
+}
+
+.settingsContent {
+  flex: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* 设置头部 */
+.settingsHeader {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.title {
+  font-size: 40px;
+  color: #1976D2;
+  margin: 0;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.subtitle {
+  font-size: 20px;
+  color: #666;
+  margin: 10px 0 0;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+/* 设置网格 */
+.settingsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.settingCard {
+  padding: 24px;
+  height: 100%;
+  transition: transform 0.3s ease;
+}
+
+.settingCard:hover {
+  transform: translateY(-5px);
+}
+
+/* 设置头部 */
+.settingHeader {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 2px dashed #FF9800;
+}
+
+.settingIcon {
+  font-size: 32px;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.settingTitle {
+  font-size: 22px;
+  color: #333;
+  margin: 0;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+/* 语言设置 */
+.settingOptions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.languageOption {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  background: #F5F5F5;
+  border: 2px solid #E0E0E0;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: left;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+.languageOption:hover {
+  background: #E0E0E0;
+  border-color: #2196F3;
+}
+
+.languageOption.active {
+  background: #E3F2FD;
+  border-color: #2196F3;
+  box-shadow: 0 4px 12px rgba(33, 150, 243, 0.2);
+}
+
+.flag {
+  font-size: 28px;
+}
+
+.languageName {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* 开关 */
+.switchGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.switch {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: relative;
+  width: 60px;
+  height: 30px;
+  background: #ccc;
+  border-radius: 34px;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 22px;
+  width: 22px;
+  left: 4px;
+  bottom: 4px;
+  background: white;
+  border-radius: 50%;
+  transition: .4s;
+}
+
+.switch input:checked + .slider {
+  background: #4CAF50;
+}
+
+.switch input:checked + .slider:before {
+  transform: translateX(30px);
+}
+
+.switchLabel {
+  font-size: 16px;
+  color: #666;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  flex: 1;
+}
+
+/* 难度选项 */
+.difficultyOptions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.difficultyOption {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  background: #F5F5F5;
+  border: 2px solid #E0E0E0;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: left;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+.difficultyOption:hover {
+  background: #E0E0E0;
+}
+
+.difficultyOption.active {
+  background: #FFF3E0;
+  border-color: #FF9800;
+  box-shadow: 0 4px 12px rgba(255, 152, 0, 0.2);
+}
+
+.difficultyIcon {
+  font-size: 32px;
+}
+
+.difficultyInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.difficultyName {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+
+.difficultyDesc {
+  font-size: 14px;
+  color: #666;
+}
+
+/* 游戏选项 */
+.gameOptions {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.sliderGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sliderLabel {
+  font-size: 16px;
+  color: #666;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sliderValue {
+  font-weight: bold;
+  color: #2196F3;
+}
+
+.rangeSlider {
+  width: 100%;
+  height: 8px;
+  background: #E0E0E0;
+  border-radius: 4px;
+  outline: none;
+  -webkit-appearance: none;
+}
+
+.rangeSlider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 24px;
+  height: 24px;
+  background: #2196F3;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 3px solid white;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.sliderMarks {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: #999;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  padding: 0 4px;
+}
+
+.animationSpeed {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.speedLabel {
+  font-size: 16px;
+  color: #666;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+.speedOptions {
+  display: flex;
+  gap: 8px;
+}
+
+.speedOption {
+  flex: 1;
+  padding: 10px;
+  background: #F5F5F5;
+  border: 2px solid #E0E0E0;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 14px;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+.speedOption:hover {
+  background: #E0E0E0;
+}
+
+.speedOption.active {
+  background: #E3F2FD;
+  border-color: #2196F3;
+  font-weight: bold;
+}
+
+/* 关于 */
+.aboutContent {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.aboutText {
+  font-size: 16px;
+  color: #666;
+  line-height: 1.6;
+  margin: 0;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+.aboutText strong {
+  color: #1976D2;
+}
+
+.versionInfo {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: #999;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  padding-top: 12px;
+  border-top: 1px dashed #E0E0E0;
+}
+
+/* 数据管理 */
+.dataManagement {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.dataButton {
+  padding: 12px 16px;
+  background: #F5F5F5;
+  border: 2px solid #E0E0E0;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 14px;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.dataButton:hover {
+  background: #E0E0E0;
+  transform: translateX(5px);
+}
+
+/* 操作按钮 */
+.actionButtons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .settingsContent {
+    padding: 20px 16px;
+  }
+
+  .title {
+    font-size: 32px;
+  }
+
+  .subtitle {
+    font-size: 18px;
+  }
+
+  .settingsGrid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .settingCard {
+    padding: 20px;
+  }
+
+  .settingTitle {
+    font-size: 20px;
+  }
+
+  .languageName {
+    font-size: 16px;
+  }
+
+  .difficultyName {
+    font-size: 16px;
+  }
+
+  .difficultyDesc {
+    font-size: 13px;
+  }
+
+  .actionButtons {
+    flex-direction: column;
+  }
+
+  .actionButtons button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 28px;
+  }
+
+  .settingIcon {
+    font-size: 24px;
+  }
+
+  .settingTitle {
+    font-size: 18px;
+  }
+
+  .speedOptions {
+    flex-direction: column;
+  }
+
+  .versionInfo {
+    flex-direction: column;
+    gap: 8px;
+  }
+}

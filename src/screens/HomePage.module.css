@@ -1,0 +1,297 @@
+/* 首页样式 */
+.homePage {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #E3F2FD, #BBDEFB);
+  position: relative;
+  overflow: hidden;
+}
+
+/* 背景装饰 */
+.backgroundDecorations {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.floatingShape {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.15;
+  filter: blur(1px);
+}
+
+/* 容器 */
+.container {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+/* 英雄部分 */
+.heroSection {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 40px 0;
+}
+
+.heroLogo {
+  margin-bottom: 20px;
+}
+
+.logoEmoji {
+  font-size: 80px;
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.2));
+  background: white;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 8px solid #FF9800;
+  margin: 0 auto;
+}
+
+.title {
+  font-size: 48px;
+  font-weight: bold;
+  color: #1976D2;
+  margin: 0;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.subtitle {
+  font-size: 24px;
+  color: #FF9800;
+  margin: 0;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  font-weight: bold;
+}
+
+.description {
+  font-size: 18px;
+  color: #555;
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 20px 0 0;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+/* 卡片部分 */
+.cardsSection {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  width: 100%;
+  max-width: 1000px;
+}
+
+.featureCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 30px;
+  height: 100%;
+  transition: transform 0.3s ease;
+}
+
+.featureCard:hover {
+  transform: translateY(-10px);
+}
+
+.cardIcon {
+  font-size: 48px;
+  margin-bottom: 10px;
+}
+
+.cardTitle {
+  font-size: 24px;
+  color: #333;
+  margin: 0;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  text-align: center;
+}
+
+.cardList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.cardList li {
+  font-size: 16px;
+  color: #666;
+  padding: 8px 12px;
+  background: #F5F5F5;
+  border-radius: 10px;
+  position: relative;
+  padding-left: 30px;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+.cardList li::before {
+  content: '✓';
+  position: absolute;
+  left: 10px;
+  color: #4CAF50;
+  font-weight: bold;
+}
+
+/* 操作部分 */
+.actionsSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
+  max-width: 500px;
+}
+
+.startButton {
+  padding: 20px 40px !important;
+  font-size: 24px !important;
+  border-radius: 60px !important;
+  box-shadow: 0 10px 30px rgba(33, 150, 243, 0.4) !important;
+}
+
+.buttonText {
+  margin-right: 12px;
+}
+
+.buttonEmoji {
+  animation: rocketLaunch 2s ease-in-out infinite;
+}
+
+@keyframes rocketLaunch {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+.secondaryActions {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* 提示部分 */
+.tipSection {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 20px 30px;
+  border-radius: 20px;
+  border: 3px dashed #FFD54F;
+  max-width: 800px;
+  margin-top: 20px;
+}
+
+.tipIcon {
+  font-size: 32px;
+  animation: tipPulse 1.5s infinite;
+}
+
+@keyframes tipPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+.tipText {
+  font-size: 16px;
+  color: #666;
+  margin: 0;
+  line-height: 1.5;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  flex: 1;
+}
+
+/* 响应式设计 */
+@media (max-width: 1024px) {
+  .cardsSection {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 20px 16px;
+    gap: 30px;
+  }
+
+  .title {
+    font-size: 36px;
+  }
+
+  .subtitle {
+    font-size: 20px;
+  }
+
+  .description {
+    font-size: 16px;
+  }
+
+  .cardsSection {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+  }
+
+  .featureCard {
+    padding: 24px;
+  }
+
+  .startButton {
+    padding: 16px 32px !important;
+    font-size: 20px !important;
+  }
+
+  .tipSection {
+    flex-direction: column;
+    text-align: center;
+    padding: 16px 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 32px;
+  }
+
+  .logoEmoji {
+    font-size: 60px;
+    width: 100px;
+    height: 100px;
+  }
+
+  .cardTitle {
+    font-size: 20px;
+  }
+
+  .secondaryActions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .secondaryActions button {
+    width: 100%;
+  }
+}

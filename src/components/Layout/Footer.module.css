@@ -1,0 +1,221 @@
+/* 页脚样式 */
+.footer {
+  background: linear-gradient(135deg, #424242, #212121);
+  border-top: 5px solid #FF9800;
+  padding: 24px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="rgba(255,152,0,0.1)" d="M0,100 L100,100 L100,0 Q50,20 0,0 Z"/></svg>');
+  background-size: 100% 100%;
+  pointer-events: none;
+}
+
+.footerContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 32px;
+  position: relative;
+  z-index: 1;
+}
+
+/* 版权信息 */
+.copyrightSection {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.copyright {
+  margin: 0;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+.designedFor {
+  margin: 0;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  font-style: italic;
+}
+
+/* 链接部分 */
+.linksSection {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.footerLink {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.footerLink:hover {
+  color: #FF9800;
+  background: rgba(255, 152, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.separator {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 14px;
+}
+
+/* 语言切换 */
+.languageSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.languageLabel {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+.languageButtons {
+  display: flex;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 4px;
+  border-radius: 25px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.languageButton {
+  background: none;
+  border: none;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: rgba(255, 255, 255, 0.7);
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  min-width: 70px;
+}
+
+.languageButton:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.languageButtonActive {
+  background: #FF9800;
+  color: white;
+  box-shadow: 0 3px 8px rgba(255, 152, 0, 0.3);
+}
+
+.languageButtonActive:hover {
+  background: #FF9800;
+  color: white;
+}
+
+/* 装饰元素 */
+.decorations {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-top: 20px;
+  opacity: 0.6;
+}
+
+.decoration {
+  font-size: 20px;
+  animation: floatDecoration 3s ease-in-out infinite;
+}
+
+.decoration:nth-child(1) { animation-delay: 0s; }
+.decoration:nth-child(2) { animation-delay: 0.3s; }
+.decoration:nth-child(3) { animation-delay: 0.6s; }
+.decoration:nth-child(4) { animation-delay: 0.9s; }
+.decoration:nth-child(5) { animation-delay: 1.2s; }
+
+@keyframes floatDecoration {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(10deg); }
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .footerContent {
+    padding: 0 16px;
+    gap: 16px;
+  }
+
+  .copyright {
+    font-size: 13px;
+  }
+
+  .designedFor {
+    font-size: 11px;
+  }
+
+  .footerLink {
+    font-size: 13px;
+  }
+
+  .languageButton {
+    padding: 5px 14px;
+    min-width: 60px;
+    font-size: 13px;
+  }
+
+  .decoration {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .linksSection {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .languageButtons {
+    flex-direction: column;
+    gap: 8px;
+    background: none;
+    border: none;
+    padding: 0;
+  }
+
+  .languageButton {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .languageButtonActive {
+    background: #FF9800;
+  }
+
+  .decorations {
+    gap: 16px;
+  }
+}

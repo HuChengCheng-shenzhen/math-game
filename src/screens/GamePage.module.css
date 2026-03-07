@@ -1,0 +1,290 @@
+/* 游戏页面样式 */
+.gamePage {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(135deg, #E3F2FD, #F3E5F5);
+}
+
+/* 游戏内容 */
+.gameContent {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 40px;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* 游戏区域 */
+.gameArea {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 30px;
+  border: 5px solid #FF9800;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* 操作按钮 */
+.actionButtons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  width: 100%;
+  max-width: 600px;
+  flex-wrap: wrap;
+}
+
+/* 侧边栏 */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* 状态卡片 */
+.statusCard,
+.tipsCard,
+.difficultyCard {
+  background: white;
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  border: 3px solid #E0E0E0;
+}
+
+.statusTitle,
+.tipsTitle,
+.difficultyTitle {
+  font-size: 20px;
+  color: #333;
+  margin: 0 0 20px;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  text-align: center;
+  padding-bottom: 12px;
+  border-bottom: 2px dashed #FF9800;
+}
+
+/* 状态项目 */
+.statusItems {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.statusItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  background: #F5F5F5;
+  border-radius: 15px;
+  transition: all 0.3s ease;
+}
+
+.statusItem:hover {
+  background: #E0E0E0;
+  transform: translateY(-2px);
+}
+
+.statusLabel {
+  font-size: 16px;
+  color: #666;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+.statusValue {
+  font-size: 24px;
+  font-weight: bold;
+  color: #2196F3;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  min-width: 60px;
+  text-align: right;
+}
+
+/* 提示卡片 */
+.tipsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.tipsList li {
+  font-size: 16px;
+  color: #666;
+  padding: 10px 14px;
+  background: #FFF9C4;
+  border-radius: 10px;
+  position: relative;
+  padding-left: 40px;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+.tipsList li::before {
+  content: '💡';
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* 难度卡片 */
+.difficultyButtons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* 模态框内容 */
+.modalContent {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.modalContent p {
+  font-size: 18px;
+  color: #666;
+  text-align: center;
+  margin: 0;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  line-height: 1.5;
+}
+
+.modalActions {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+/* 帮助内容 */
+.helpContent {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.helpSection {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.helpSection h4 {
+  font-size: 20px;
+  color: #2196F3;
+  margin: 0;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.helpSection ol,
+.helpSection ul {
+  margin: 0;
+  padding-left: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.helpSection li {
+  font-size: 16px;
+  color: #666;
+  line-height: 1.5;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+.helpSection strong {
+  color: #333;
+}
+
+/* 响应式设计 */
+@media (max-width: 1200px) {
+  .gameContent {
+    grid-template-columns: 1fr;
+    max-width: 800px;
+  }
+
+  .sidebar {
+    grid-row: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .gameContent {
+    padding: 20px 16px;
+    gap: 30px;
+  }
+
+  .gameArea {
+    padding: 16px;
+    gap: 30px;
+  }
+
+  .actionButtons {
+    flex-direction: column;
+    align-items: stretch;
+    max-width: 400px;
+  }
+
+  .statusCard,
+  .tipsCard,
+  .difficultyCard {
+    padding: 20px;
+  }
+
+  .statusTitle,
+  .tipsTitle,
+  .difficultyTitle {
+    font-size: 18px;
+    margin-bottom: 16px;
+  }
+
+  .statusValue {
+    font-size: 20px;
+  }
+
+  .tipsList li {
+    font-size: 15px;
+    padding: 8px 12px 8px 36px;
+  }
+}
+
+@media (max-width: 480px) {
+  .gameContent {
+    padding: 16px 12px;
+    gap: 20px;
+  }
+
+  .sidebar {
+    grid-template-columns: 1fr;
+  }
+
+  .modalContent p {
+    font-size: 16px;
+  }
+
+  .helpSection h4 {
+    font-size: 18px;
+  }
+
+  .helpSection li {
+    font-size: 15px;
+  }
+}

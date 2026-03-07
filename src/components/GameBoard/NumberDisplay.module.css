@@ -1,0 +1,150 @@
+/* 数字显示容器 */
+.numberContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin: 20px 0;
+}
+
+/* 数字显示 */
+.numberDisplay {
+  background: linear-gradient(135deg, #FF9800, #FF5722);
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 30px rgba(255, 152, 0, 0.3);
+  border: 6px solid white;
+  position: relative;
+  z-index: 1;
+}
+
+/* 数字 */
+.number {
+  font-size: 48px;
+  font-weight: bold;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+/* 数字标签 */
+.numberLabel {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.9);
+  margin-top: 4px;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+/* 正确状态 */
+.correct .numberDisplay {
+  background: linear-gradient(135deg, #4CAF50, #2E7D32);
+  box-shadow: 0 10px 30px rgba(76, 175, 80, 0.4);
+  animation: correctPulse 1s ease-in-out;
+}
+
+@keyframes correctPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+/* 错误状态 */
+.incorrect .numberDisplay {
+  background: linear-gradient(135deg, #F44336, #C62828);
+  box-shadow: 0 10px 30px rgba(244, 67, 54, 0.4);
+  animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-10px); }
+  75% { transform: translateX(10px); }
+}
+
+/* 提示气泡 */
+.hintBubble {
+  position: absolute;
+  top: -60px;
+  background: white;
+  border-radius: 30px;
+  padding: 12px 24px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border: 3px solid #FFD54F;
+  z-index: 2;
+  min-width: 200px;
+}
+
+.hintIcon {
+  font-size: 24px;
+  animation: float 2s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+.hintText {
+  font-size: 18px;
+  color: #333;
+  font-weight: bold;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+/* 显示提示时的效果 */
+.showHint .numberDisplay {
+  animation: attentionPulse 1.5s infinite;
+}
+
+@keyframes attentionPulse {
+  0%, 100% { box-shadow: 0 10px 30px rgba(255, 152, 0, 0.3); }
+  50% { box-shadow: 0 10px 40px rgba(255, 152, 0, 0.6); }
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .numberDisplay {
+    width: 100px;
+    height: 100px;
+  }
+
+  .number {
+    font-size: 40px;
+  }
+
+  .hintBubble {
+    top: -50px;
+    min-width: 180px;
+    padding: 10px 20px;
+  }
+
+  .hintText {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .numberDisplay {
+    width: 80px;
+    height: 80px;
+  }
+
+  .number {
+    font-size: 32px;
+  }
+
+  .hintBubble {
+    top: -40px;
+    min-width: 160px;
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+}

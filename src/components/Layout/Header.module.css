@@ -1,0 +1,258 @@
+/* 头部样式 */
+.header {
+  background: linear-gradient(135deg, #2196F3, #1976D2);
+  border-bottom: 5px solid #FF9800;
+  box-shadow: 0 4px 20px rgba(33, 150, 243, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="rgba(255,255,255,0.1)" d="M0,0 L100,0 L100,100 Q50,80 0,100 Z"/></svg>');
+  background-size: 100% 100%;
+  pointer-events: none;
+}
+
+.headerContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 32px;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* Logo部分 */
+.logoSection {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.logo {
+  font-size: 48px;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+  background: white;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 4px solid #FF9800;
+}
+
+.titleSection {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  margin: 0;
+  font-size: 28px;
+  font-weight: bold;
+  color: white;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.subtitle {
+  margin: 0;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.9);
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+/* 游戏信息 */
+.gameInfo {
+  display: flex;
+  gap: 32px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 12px 24px;
+  border-radius: 30px;
+  border: 3px dashed #FF9800;
+}
+
+.infoItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  min-width: 60px;
+}
+
+.infoLabel {
+  font-size: 14px;
+  color: #666;
+  font-weight: bold;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+.infoValue {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  padding: 4px 12px;
+  border-radius: 20px;
+  background: white;
+  min-width: 40px;
+  text-align: center;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 操作按钮 */
+.actionButtons {
+  display: flex;
+  gap: 16px;
+}
+
+.iconButton {
+  background: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 70px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.iconButton:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  background: #FF9800;
+}
+
+.iconButton:hover .icon,
+.iconButton:hover .iconLabel {
+  color: white;
+}
+
+.icon {
+  font-size: 24px;
+}
+
+.iconLabel {
+  font-size: 12px;
+  font-weight: bold;
+  color: #333;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+/* 进度条 */
+.progressBar {
+  height: 8px;
+  background: rgba(255, 255, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  border-radius: 0 4px 4px 0;
+  transition: width 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.progressFill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* 响应式设计 */
+@media (max-width: 1024px) {
+  .headerContent {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 16px;
+  }
+
+  .gameInfo {
+    order: 3;
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 24px;
+  }
+
+  .logo {
+    font-size: 40px;
+    width: 50px;
+    height: 50px;
+  }
+
+  .gameInfo {
+    gap: 24px;
+    padding: 10px 20px;
+  }
+
+  .infoValue {
+    font-size: 20px;
+    padding: 3px 10px;
+  }
+
+  .iconButton {
+    padding: 8px 12px;
+    min-width: 60px;
+  }
+
+  .icon {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .headerContent {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .logoSection {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .gameInfo {
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .infoItem {
+    min-width: 50px;
+  }
+
+  .actionButtons {
+    width: 100%;
+    justify-content: center;
+  }
+}

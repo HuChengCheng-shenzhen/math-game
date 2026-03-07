@@ -1,0 +1,260 @@
+/* 错误提示容器 */
+.errorHint {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(135deg, #FFFFFF, #F5F5F5);
+  border-radius: 30px;
+  padding: 30px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  border: 5px solid #FFD54F;
+  min-width: 400px;
+  max-width: 500px;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translate(-50%, -50%) translateY(0); }
+  50% { transform: translate(-50%, -50%) translateY(-10px); }
+}
+
+/* 提示图标容器 */
+.hintIconContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hintIcon {
+  font-size: 48px;
+  z-index: 2;
+  filter: drop-shadow(0 4px 8px rgba(255, 213, 79, 0.4));
+}
+
+.hintGlow {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background: radial-gradient(circle, rgba(255, 213, 79, 0.3) 0%, transparent 70%);
+  border-radius: 50%;
+  z-index: 1;
+  animation: glowPulse 2s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+  0%, 100% { transform: scale(1); opacity: 0.7; }
+  50% { transform: scale(1.2); opacity: 1; }
+}
+
+/* 提示内容 */
+.hintContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.hintHeader {
+  display: flex;
+  align-items: center;
+}
+
+.hintMainText {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.hintBody {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.hintCountText {
+  font-size: 20px;
+  color: #666;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+.hintNumber {
+  font-size: 28px;
+  font-weight: bold;
+  display: inline-block;
+  background: linear-gradient(135deg, #FF5722, #FF9800);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  padding: 2px 8px;
+  border-radius: 10px;
+  margin: 0 4px;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+.hintFooter {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.hintTip {
+  font-size: 16px;
+  color: #888;
+  font-style: italic;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+/* 计数动画 */
+.countingAnimation {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 4px;
+  height: 4px;
+  background: #E0E0E0;
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.countingDot {
+  width: 8px;
+  height: 8px;
+  background: #4CAF50;
+  border-radius: 50%;
+  animation: dotMove 1s infinite;
+}
+
+.countingDot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.countingDot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes dotMove {
+  0%, 100% { transform: translateX(0); opacity: 0.3; }
+  50% { transform: translateX(10px); opacity: 1; }
+}
+
+/* 关闭按钮 */
+.closeButton {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: rgba(255, 255, 255, 0.8);
+  border: none;
+  font-size: 28px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #666;
+  transition: all 0.2s ease;
+  font-weight: bold;
+  z-index: 10;
+  line-height: 1;
+}
+
+.closeButton:hover {
+  background: white;
+  color: #333;
+  transform: scale(1.1);
+}
+
+/* 箭头指示器 */
+.arrowIndicator {
+  position: absolute;
+  bottom: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.arrowBody {
+  width: 3px;
+  height: 40px;
+  background: linear-gradient(to bottom, #FF9800, transparent);
+}
+
+.arrowHead {
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 15px solid #FF9800;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .errorHint {
+    min-width: 300px;
+    max-width: 90vw;
+    padding: 20px;
+    gap: 16px;
+  }
+
+  .hintIcon {
+    font-size: 36px;
+  }
+
+  .hintMainText {
+    font-size: 20px;
+  }
+
+  .hintCountText {
+    font-size: 18px;
+  }
+
+  .hintNumber {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .errorHint {
+    flex-direction: column;
+    text-align: center;
+    min-width: 250px;
+  }
+
+  .hintIcon {
+    font-size: 32px;
+  }
+
+  .hintMainText {
+    font-size: 18px;
+  }
+
+  .hintCountText {
+    font-size: 16px;
+  }
+
+  .hintNumber {
+    font-size: 20px;
+  }
+
+  .closeButton {
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    width: 30px;
+    height: 30px;
+  }
+}

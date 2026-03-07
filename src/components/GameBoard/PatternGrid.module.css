@@ -1,0 +1,200 @@
+/* 图案网格容器 */
+.patternGrid {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  margin: 40px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: visible;
+}
+
+/* 单个图案 */
+.pattern {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  border: 3px solid #FF9800;
+  z-index: 1;
+  transition: all 0.3s ease;
+  transform-origin: center;
+}
+
+/* 图案内容 */
+.patternContent {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.patternEmoji {
+  font-size: 32px;
+  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+/* 图案细节 */
+.patternWithDetails {
+  background: linear-gradient(135deg, #FFFFFF, #F0F0F0);
+}
+
+.patternDetails {
+  position: absolute;
+  bottom: -10px;
+  display: flex;
+  gap: 4px;
+}
+
+.detailDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #FF9800;
+  animation: dotPulse 1s infinite;
+}
+
+.detailDot:nth-child(2) {
+  animation-delay: 0.2s;
+  background: #4CAF50;
+}
+
+.detailDot:nth-child(3) {
+  animation-delay: 0.4s;
+  background: #2196F3;
+}
+
+@keyframes dotPulse {
+  0%, 100% { transform: scale(1); opacity: 0.7; }
+  50% { transform: scale(1.2); opacity: 1; }
+}
+
+/* 选中状态 */
+.patternSelected {
+  border-color: #4CAF50;
+  border-width: 4px;
+  box-shadow: 0 8px 25px rgba(76, 175, 80, 0.4);
+  z-index: 2;
+}
+
+/* 高亮状态 */
+.patternHighlighted {
+  border-color: #2196F3;
+  box-shadow: 0 8px 25px rgba(33, 150, 243, 0.4);
+}
+
+/* 计数徽章 */
+.countBadge {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background: #2196F3;
+  color: white;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: bold;
+  z-index: 3;
+  box-shadow: 0 3px 8px rgba(33, 150, 243, 0.3);
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+/* 计数覆盖层 */
+.countOverlay {
+  position: absolute;
+  bottom: -50px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.countText {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 12px 24px;
+  border-radius: 30px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  border: 3px dashed #FF9800;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.countNumber {
+  font-size: 24px;
+  color: #FF5722;
+  background: #FFF3E0;
+  padding: 4px 12px;
+  border-radius: 20px;
+  min-width: 40px;
+  text-align: center;
+}
+
+/* 图案悬停效果 */
+.pattern:hover {
+  z-index: 10;
+  transform: scale(1.15) !important;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .patternGrid {
+    height: 250px;
+  }
+
+  .pattern {
+    width: 50px;
+    height: 50px;
+  }
+
+  .patternEmoji {
+    font-size: 26px;
+  }
+
+  .countText {
+    font-size: 18px;
+    padding: 10px 20px;
+  }
+
+  .countNumber {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .patternGrid {
+    height: 200px;
+  }
+
+  .pattern {
+    width: 45px;
+    height: 45px;
+  }
+
+  .patternEmoji {
+    font-size: 22px;
+  }
+
+  .countText {
+    font-size: 16px;
+    padding: 8px 16px;
+  }
+}

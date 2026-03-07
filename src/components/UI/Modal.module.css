@@ -1,0 +1,157 @@
+/* 模态框样式 */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.modalBackdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(3px);
+}
+
+.modal {
+  position: relative;
+  background: white;
+  border-radius: 24px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  z-index: 1001;
+  max-width: 95vw;
+  max-height: 95vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 模态框尺寸 */
+.modal--small {
+  width: 400px;
+}
+
+.modal--medium {
+  width: 600px;
+}
+
+.modal--large {
+  width: 800px;
+}
+
+/* 模态框头部 */
+.modalHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 32px;
+  border-bottom: 2px solid #F0F0F0;
+  background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+}
+
+.modalTitle {
+  margin: 0;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+/* 模态框内容 */
+.modalContent {
+  padding: 32px;
+  overflow-y: auto;
+  flex: 1;
+  background: #FAFAFA;
+}
+
+/* 关闭按钮 */
+.modalCloseButton {
+  background: none;
+  border: none;
+  font-size: 32px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #666;
+  transition: all 0.2s ease;
+  font-weight: bold;
+  line-height: 1;
+}
+
+.modalCloseButton:hover {
+  background: #F0F0F0;
+  color: #333;
+  transform: scale(1.1);
+}
+
+.modalCloseButtonTop {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: rgba(255, 255, 255, 0.8);
+  border: none;
+  font-size: 28px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #666;
+  transition: all 0.2s ease;
+  font-weight: bold;
+  z-index: 10;
+  line-height: 1;
+}
+
+.modalCloseButtonTop:hover {
+  background: white;
+  color: #333;
+  transform: scale(1.1);
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .modal--small,
+  .modal--medium,
+  .modal--large {
+    width: 90vw;
+    max-height: 80vh;
+  }
+
+  .modalHeader {
+    padding: 16px 24px;
+  }
+
+  .modalContent {
+    padding: 24px;
+  }
+
+  .modalTitle {
+    font-size: 20px;
+  }
+}
+
+/* 儿童友好效果 */
+.modal {
+  border: 4px solid #FF9800;
+}
+
+.modalHeader {
+  border-bottom: 3px dashed #FF9800;
+}

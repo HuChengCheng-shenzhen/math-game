@@ -1,0 +1,97 @@
+{
+  "app": {
+    "title": "数感乐园",
+    "subtitle": "Math Fun Land",
+    "description": "专为3-6岁儿童设计的数学启蒙游戏"
+  },
+  "game": {
+    "start": "开始游戏",
+    "pause": "暂停",
+    "resume": "继续",
+    "restart": "重新开始",
+    "next": "下一关",
+    "home": "返回首页",
+    "settings": "设置",
+    "help": "帮助",
+    "score": "分数",
+    "level": "关卡",
+    "difficulty": "难度",
+    "easy": "简单",
+    "medium": "中等",
+    "hard": "困难",
+    "correct": "正确",
+    "incorrect": "错误",
+    "selectNumber": "选择正确的数字",
+    "countPatterns": "数一数图案",
+    "correctAnswer": "正确答案",
+    "yourAnswer": "你的答案",
+    "time": "时间",
+    "progress": "进度"
+  },
+  "feedback": {
+    "excellent": "太棒了！",
+    "great": "很好！",
+    "good": "不错！",
+    "tryAgain": "再试一次！",
+    "almost": "就差一点！",
+    "correct": "答对了！",
+    "incorrect": "答错了",
+    "hint": "提示：数一数有几个？",
+    "autoAdvance": "自动进入下一关..."
+  },
+  "difficulty": {
+    "easyDesc": "数字5-10，简单图案",
+    "mediumDesc": "数字5-15，中等图案",
+    "hardDesc": "数字5-20，复杂图案",
+    "adaptive": "自适应难度"
+  },
+  "patterns": {
+    "icecream": "冰淇淋",
+    "cookie": "饼干",
+    "star": "星星",
+    "balloon": "气球",
+    "animal": "小动物"
+  },
+  "settings": {
+    "title": "游戏设置",
+    "language": "语言",
+    "sound": "音效",
+    "music": "音乐",
+    "animation": "动画",
+    "hintDuration": "提示显示时间",
+    "autoAdvance": "答对后自动下一关",
+    "reset": "恢复默认",
+    "save": "保存设置",
+    "cancel": "取消"
+  },
+  "home": {
+    "welcome": "欢迎来到数感乐园！",
+    "goal": "游戏目标",
+    "goal1": "认识数字5-20",
+    "goal2": "建立数量对应关系",
+    "goal3": "培养观察力和注意力",
+    "goal4": "在错误中学习成长",
+    "features": "游戏特色",
+    "feature1": "可爱的冰淇淋、饼干图案",
+    "feature2": "智能难度调整系统",
+    "feature3": "友好的错误提示",
+    "feature4": "中英文双语支持",
+    "ageGroup": "适合年龄",
+    "age1": "3-4岁：简单模式",
+    "age2": "4-5岁：中等模式",
+    "age3": "5-6岁：挑战模式",
+    "age4": "所有年龄：快乐学习",
+    "tip": "游戏会根据孩子的表现自动调整难度，确保学习过程既有挑战又充满乐趣！"
+  },
+  "errors": {
+    "hint": "再数一数！总共有 {{count}} 个哦！",
+    "countAgain": "仔细看看图案的数量",
+    "showAnswer": "显示正确答案"
+  },
+  "status": {
+    "consecutiveCorrect": "连续正确",
+    "consecutiveWrong": "连续错误",
+    "accuracy": "正确率",
+    "totalRounds": "总关卡数"
+  }
+}

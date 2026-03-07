@@ -53,9 +53,22 @@ npm run build
 npm run test
 ```
 
+### 本地生产部署
+```bash
+# 构建生产版本
+npm run build
+
+# 启动本地生产服务器
+npm start
+
+# 或指定端口启动
+PORT=8080 npm start
+```
+
 ### 访问应用
-开发服务器启动后，在浏览器中打开：
-- http://localhost:5173
+- **开发环境**: http://localhost:5173
+- **生产环境**: http://localhost:3000 (默认)
+- **自定义端口**: http://localhost:<PORT>
 
 ## 📁 项目结构
 

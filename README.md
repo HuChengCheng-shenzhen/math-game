@@ -70,6 +70,16 @@ PORT=8080 npm start
 - **生产环境**: http://localhost:3000 (默认)
 - **自定义端口**: http://localhost:<PORT>
 
+### 🌐 GitHub 在线部署
+代码已同步到 GitHub，可启用 GitHub Pages 在线访问：
+
+1. **访问仓库**: https://github.com/HuChengCheng-shenzhen/math-game
+2. **启用 Pages**: Settings → Pages → Branch: `gh-pages` → Folder: `/` → Save
+3. **访问地址**: https://HuChengCheng-shenzhen.github.io/math-game/
+4. **部署状态**: 自动通过 GitHub Actions 构建和部署
+
+**当前状态**: ✅ 代码已同步 | ⚙️ Pages 待配置
+
 ## 📁 项目结构
 
 ```

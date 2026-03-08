@@ -38,7 +38,13 @@ function getMimeType(ext) {
 
 // 发送错误响应
 function sendError(res, statusCode, message) {
-  res.writeHead(statusCode, { 'Content-Type': 'text/html; charset=utf-8' });
+  const headers = {
+    'Content-Type': 'text/html; charset=utf-8',
+    'X-Content-Type-Options': 'nosniff',
+    'X-Frame-Options': 'DENY',
+    'X-XSS-Protection': '1; mode=block',
+  };
+  res.writeHead(statusCode, headers);
   res.end(`<h1>${statusCode} - ${message}</h1>`);
 }
 
@@ -61,7 +67,20 @@ function sendFile(res, filePath, contentType) {
   });
 
   stream.on('open', () => {
-    res.writeHead(200, { 'Content-Type': contentType });
+    // 生产环境响应头
+    const headers = {
+      'Content-Type': contentType,
+      // 安全头
+      'X-Content-Type-Options': 'nosniff',
+      'X-Frame-Options': 'DENY',
+      'X-XSS-Protection': '1; mode=block',
+      // 缓存控制
+      'Cache-Control': contentType.includes('text/html')
+        ? 'no-store, no-cache, must-revalidate, proxy-revalidate'
+        : 'public, max-age=31536000, immutable', // 静态资源长期缓存
+    };
+
+    res.writeHead(200, headers);
     stream.pipe(res);
   });
 }

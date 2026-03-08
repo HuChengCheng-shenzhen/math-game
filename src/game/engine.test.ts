@@ -20,6 +20,8 @@ describe('gameReducer', () => {
     expect(newState.score).toBe(10) // SCORE_PER_CORRECT 应该是10
     expect(newState.lastAnswerWasWrong).toBe(false)
     expect(newState.showHint).toBe(false)
+    expect(newState.errorCount).toBe(0)
+    expect(newState.hintLevel).toBe(0)
 
     // 测试错误答案
     const state2: GameState = {
@@ -36,6 +38,43 @@ describe('gameReducer', () => {
     expect(newState2.score).toBe(0)
     expect(newState2.lastAnswerWasWrong).toBe(true)
     expect(newState2.showHint).toBe(true)
+    expect(newState2.errorCount).toBe(1)
+    expect(newState2.hintLevel).toBe(1)
+  })
+
+  it('should handle progressive hint levels', () => {
+    let state: GameState = {
+      ...initialGameState,
+      currentNumber: 7,
+      correctAnswer: 7,
+      options: [6, 7, 8],
+    }
+
+    // 第一次错误
+    state = gameReducer(state, { type: 'SELECT_ANSWER', payload: 6 })
+    expect(state.errorCount).toBe(1)
+    expect(state.hintLevel).toBe(1)
+
+    // 第二次错误
+    state = gameReducer(state, { type: 'SELECT_ANSWER', payload: 8 })
+    expect(state.errorCount).toBe(2)
+    expect(state.hintLevel).toBe(2)
+
+    // 第三次错误
+    state = gameReducer(state, { type: 'SELECT_ANSWER', payload: 6 })
+    expect(state.errorCount).toBe(3)
+    expect(state.hintLevel).toBe(3)
+
+    // 第四次错误（应该保持hintLevel为3，最大值）
+    state = gameReducer(state, { type: 'SELECT_ANSWER', payload: 8 })
+    expect(state.errorCount).toBe(4)
+    expect(state.hintLevel).toBe(3)
+
+    // 正确回答（应该重置）
+    state = gameReducer(state, { type: 'SELECT_ANSWER', payload: 7 })
+    expect(state.errorCount).toBe(0)
+    expect(state.hintLevel).toBe(0)
+    expect(state.isCorrect).toBe(true)
   })
 
   it('should handle GENERATE_NEW_ROUND', () => {
@@ -59,6 +98,8 @@ describe('gameReducer', () => {
     // 连续正确次数达到3时会被重置为0，难度提升
     expect(newState.consecutiveCorrect).toBe(0)
     expect(newState.difficulty).toBe('hard') // 从medium提升到hard
+    expect(newState.errorCount).toBe(0)
+    expect(newState.hintLevel).toBe(0)
   })
 
   it('should handle HIDE_HINT', () => {
@@ -120,7 +161,7 @@ describe('difficulty adjustment', () => {
 
 describe('difficulty progression in game', () => {
   it('should increase difficulty after 3 consecutive correct answers', () => {
-    let state: GameState = {
+    const state: GameState = {
       ...initialGameState,
       difficulty: 'easy',
       consecutiveCorrect: 2,
@@ -137,7 +178,7 @@ describe('difficulty progression in game', () => {
   })
 
   it('should decrease difficulty after wrong answer', () => {
-    let state: GameState = {
+    const state: GameState = {
       ...initialGameState,
       difficulty: 'medium',
       lastAnswerWasWrong: true,

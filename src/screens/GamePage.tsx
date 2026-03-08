@@ -18,6 +18,7 @@ const GamePage: React.FC = () => {
   const [showPauseModal, setShowPauseModal] = React.useState(false)
   const [showHelpModal, setShowHelpModal] = React.useState(false)
   const [language, setLanguage] = React.useState<'zh-CN' | 'en-US'>('zh-CN')
+  const [isPanelCollapsed, setIsPanelCollapsed] = React.useState(false)
 
   // 初始化游戏
   useEffect(() => {
@@ -120,6 +121,7 @@ const GamePage: React.FC = () => {
             correctAnswer={state.correctAnswer}
             selectedAnswer={state.selectedAnswer}
             isCorrect={state.isCorrect}
+            hintLevel={state.hintLevel}
             onSelect={handleAnswerSelect}
             disabled={state.selectedAnswer !== null}
           />
@@ -152,67 +154,77 @@ const GamePage: React.FC = () => {
           </div>
         </div>
 
-        {/* 侧边栏（游戏状态和提示） */}
-        <aside className={styles.sidebar}>
-          <div className={styles.statusCard}>
-            <h3 className={styles.statusTitle}>游戏状态</h3>
-            <div className={styles.statusItems}>
-              <div className={styles.statusItem}>
-                <span className={styles.statusLabel}>连续正确</span>
-                <span className={styles.statusValue}>{state.consecutiveCorrect}</span>
+        {/* 信息面板（游戏状态、提示、难度设置 - 可折叠） */}
+        <div className={`${styles.infoPanel} ${isPanelCollapsed ? styles.collapsed : ''}`}>
+          <button
+            className={styles.collapseButton}
+            onClick={() => setIsPanelCollapsed(!isPanelCollapsed)}
+            aria-label={isPanelCollapsed ? '展开信息面板' : '折叠信息面板'}
+          >
+            {isPanelCollapsed ? '🔽 展开信息' : '🔼 折叠信息'}
+          </button>
+
+          <div className={styles.infoPanelContent}>
+            <div className={styles.statusCard}>
+              <h3 className={styles.statusTitle}>游戏状态</h3>
+              <div className={styles.statusItems}>
+                <div className={styles.statusItem}>
+                  <span className={styles.statusLabel}>连续正确</span>
+                  <span className={styles.statusValue}>{state.consecutiveCorrect}</span>
+                </div>
+                <div className={styles.statusItem}>
+                  <span className={styles.statusLabel}>连续错误</span>
+                  <span className={styles.statusValue}>{state.consecutiveWrong}</span>
+                </div>
+                <div className={styles.statusItem}>
+                  <span className={styles.statusLabel}>正确率</span>
+                  <span className={styles.statusValue}>
+                    {state.level > 1
+                      ? `${Math.round((state.score / 10 / (state.level - 1)) * 100)}%`
+                      : '0%'}
+                  </span>
+                </div>
               </div>
-              <div className={styles.statusItem}>
-                <span className={styles.statusLabel}>连续错误</span>
-                <span className={styles.statusValue}>{state.consecutiveWrong}</span>
-              </div>
-              <div className={styles.statusItem}>
-                <span className={styles.statusLabel}>正确率</span>
-                <span className={styles.statusValue}>
-                  {state.level > 1
-                    ? `${Math.round((state.score / 10 / (state.level - 1)) * 100)}%`
-                    : '0%'}
-                </span>
+            </div>
+
+            <div className={styles.tipsCard}>
+              <h3 className={styles.tipsTitle}>💡 游戏提示</h3>
+              <ul className={styles.tipsList}>
+                <li>仔细数一数图案的数量</li>
+                <li>选择与图案数量相同的数字</li>
+                <li>错误时会有提示帮助学习</li>
+                <li>连续正确会提高难度哦！</li>
+              </ul>
+            </div>
+
+            <div className={styles.difficultyCard}>
+              <h3 className={styles.difficultyTitle}>难度设置</h3>
+              <div className={styles.difficultyButtons}>
+                <Button
+                  variant={state.difficulty === 'easy' ? 'primary' : 'secondary'}
+                  size="small"
+                  onClick={() => handleSetDifficulty('easy')}
+                >
+                  简单
+                </Button>
+                <Button
+                  variant={state.difficulty === 'medium' ? 'primary' : 'secondary'}
+                  size="small"
+                  onClick={() => handleSetDifficulty('medium')}
+                >
+                  中等
+                </Button>
+                <Button
+                  variant={state.difficulty === 'hard' ? 'primary' : 'secondary'}
+                  size="small"
+                  onClick={() => handleSetDifficulty('hard')}
+                >
+                  困难
+                </Button>
               </div>
             </div>
           </div>
-
-          <div className={styles.tipsCard}>
-            <h3 className={styles.tipsTitle}>💡 游戏提示</h3>
-            <ul className={styles.tipsList}>
-              <li>仔细数一数图案的数量</li>
-              <li>选择与图案数量相同的数字</li>
-              <li>错误时会有提示帮助学习</li>
-              <li>连续正确会提高难度哦！</li>
-            </ul>
-          </div>
-
-          <div className={styles.difficultyCard}>
-            <h3 className={styles.difficultyTitle}>难度设置</h3>
-            <div className={styles.difficultyButtons}>
-              <Button
-                variant={state.difficulty === 'easy' ? 'primary' : 'secondary'}
-                size="small"
-                onClick={() => handleSetDifficulty('easy')}
-              >
-                简单
-              </Button>
-              <Button
-                variant={state.difficulty === 'medium' ? 'primary' : 'secondary'}
-                size="small"
-                onClick={() => handleSetDifficulty('medium')}
-              >
-                中等
-              </Button>
-              <Button
-                variant={state.difficulty === 'hard' ? 'primary' : 'secondary'}
-                size="small"
-                onClick={() => handleSetDifficulty('hard')}
-              >
-                困难
-              </Button>
-            </div>
-          </div>
-        </aside>
+        </div>
       </main>
 
       <Footer
@@ -225,7 +237,6 @@ const GamePage: React.FC = () => {
       {/* 错误提示 */}
       <ErrorHint
         show={state.showHint}
-        number={state.correctAnswer}
         onHide={handleHideHint}
         language={language}
       />

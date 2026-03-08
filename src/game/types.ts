@@ -51,6 +51,8 @@ export interface GameState {
   consecutiveWrong: number
   lastAnswerWasWrong: boolean
   showHint: boolean
+  errorCount: number
+  hintLevel: number
 }
 
 // 游戏动作类型

@@ -17,6 +17,8 @@ export const initialGameState: GameState = {
   consecutiveWrong: 0,
   lastAnswerWasWrong: false,
   showHint: false,
+  errorCount: 0,
+  hintLevel: 0,
 }
 
 // 难度调整函数
@@ -89,11 +91,26 @@ export function gameReducer(state: GameState, action: GameAction): GameState {
         consecutiveWrong: newConsecutiveWrong,
         lastAnswerWasWrong: false,
         showHint: false,
+        errorCount: 0,
+        hintLevel: 0,
       }
     }
 
     case 'SELECT_ANSWER': {
       const isCorrect = action.payload === state.correctAnswer
+      let errorCount = state.errorCount
+      let hintLevel = state.hintLevel
+
+      if (isCorrect) {
+        // 回答正确，重置错误计数和提示级别
+        errorCount = 0
+        hintLevel = 0
+      } else {
+        // 回答错误，增加错误计数
+        errorCount = state.errorCount + 1
+        // 根据错误次数设置提示级别（最多3级）
+        hintLevel = Math.min(errorCount, 3)
+      }
 
       return {
         ...state,
@@ -102,6 +119,8 @@ export function gameReducer(state: GameState, action: GameAction): GameState {
         score: isCorrect ? state.score + SCORE_PER_CORRECT : state.score,
         lastAnswerWasWrong: !isCorrect,
         showHint: !isCorrect, // 错误时显示提示
+        errorCount,
+        hintLevel,
       }
     }
 

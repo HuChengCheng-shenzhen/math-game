@@ -16,7 +16,7 @@ export const PATTERN_COMPLEXITIES: Record<1 | 2 | 3, PatternComplexity> = {
       maxVariants: 5,
       hasDetails: false,
       animationComplexity: 1,
-      arrangement: 'simple',
+      arrangement: 'grid',
     },
   },
   2: {
@@ -36,7 +36,7 @@ export const PATTERN_COMPLEXITIES: Record<1 | 2 | 3, PatternComplexity> = {
       maxVariants: 15,
       hasDetails: true,
       animationComplexity: 3,
-      arrangement: 'cluster',
+      arrangement: 'grid',
     },
   },
 }

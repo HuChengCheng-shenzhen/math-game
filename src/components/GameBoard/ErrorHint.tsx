@@ -4,7 +4,6 @@ import styles from './ErrorHint.module.css'
 
 interface ErrorHintProps {
   show: boolean
-  number: number
   onHide: () => void
   autoHideDuration?: number
   language?: 'zh-CN' | 'en-US'
@@ -12,7 +11,6 @@ interface ErrorHintProps {
 
 const ErrorHint: React.FC<ErrorHintProps> = ({
   show,
-  number,
   onHide,
   autoHideDuration = 3000,
   language = 'zh-CN',
@@ -32,15 +30,13 @@ const ErrorHint: React.FC<ErrorHintProps> = ({
   const hintText = {
     'zh-CN': {
       main: '再数一数！',
-      count: '总共有',
-      unit: '个哦！',
       tip: '仔细看看图案的数量',
+      genericHint: '数一数图案的数量，然后选择对应的数字',
     },
     'en-US': {
       main: 'Count again!',
-      count: 'There are',
-      unit: 'in total!',
       tip: 'Look carefully at the patterns',
+      genericHint: 'Count the patterns and choose the matching number',
     },
   }[language]
 
@@ -81,22 +77,7 @@ const ErrorHint: React.FC<ErrorHintProps> = ({
 
             <div className={styles.hintBody}>
               <span className={styles.hintCountText}>
-                {hintText.count}{' '}
-                <motion.span
-                  className={styles.hintNumber}
-                  animate={{
-                    scale: [1, 1.2, 1],
-                    color: ['#FF5722', '#FF9800', '#FF5722'],
-                  }}
-                  transition={{
-                    duration: 1.5,
-                    repeat: Infinity,
-                    repeatType: 'reverse',
-                  }}
-                >
-                  {number}
-                </motion.span>{' '}
-                {hintText.unit}
+                {hintText.genericHint}
               </span>
             </div>
 

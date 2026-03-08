@@ -64,6 +64,7 @@ export function calculatePercentage(part: number, total: number): number {
 }
 
 // 防抖函数
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function debounce<T extends (...args: any[]) => any>(
   func: T,
   wait: number
@@ -76,6 +77,7 @@ export function debounce<T extends (...args: any[]) => any>(
 }
 
 // 节流函数
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function throttle<T extends (...args: any[]) => any>(
   func: T,
   limit: number
@@ -129,6 +131,7 @@ export function safeJsonParse<T>(jsonString: string, fallback: T): T {
 }
 
 // 检查对象是否为空
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function isEmptyObject(obj: Record<string, any>): boolean {
   return Object.keys(obj).length === 0
 }

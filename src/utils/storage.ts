@@ -207,8 +207,8 @@ export function isStorageAvailable(): boolean {
 export function getStorageUsage(): number {
   try {
     let total = 0
-    for (let key in localStorage) {
-      if (localStorage.hasOwnProperty(key)) {
+    for (const key in localStorage) {
+      if (Object.prototype.hasOwnProperty.call(localStorage, key)) {
         total += localStorage[key].length * 2 // UTF-16字符占2字节
       }
     }

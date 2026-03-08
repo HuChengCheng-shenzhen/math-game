@@ -37,36 +37,48 @@ function calculatePosition(
   arrangement: 'simple' | 'grid' | 'cluster'
 ): { x: number; y: number } {
   switch (arrangement) {
-    case 'simple':
-      // 简单线性排列
-      return { x: index * 80, y: 0 }
+    case 'simple': {
+      // 简单线性排列，整体水平居中，增加间距
+      const totalWidth = (total - 1) * 100  // 增加间距从80px到100px
+      const startX = -totalWidth / 2
+      return { x: startX + index * 100, y: 0 }
+    }
 
-    case 'grid':
-      // 网格排列（每行最多5个）
+    case 'grid': {
+      // 网格排列（每行最多5个），整体居中，增加间距方便辨认
       const cols = Math.min(5, Math.ceil(Math.sqrt(total)))
+      const rows = Math.ceil(total / cols)
+      const gridWidth = (cols - 1) * 90  // 增加间距从70px到90px
+      const gridHeight = (rows - 1) * 90  // 增加间距从70px到90px
+      const gridStartX = -gridWidth / 2
+      const gridStartY = -gridHeight / 2
       const row = Math.floor(index / cols)
       const col = index % cols
-      return { x: col * 70, y: row * 70 }
+      return { x: gridStartX + col * 90, y: gridStartY + row * 90 }  // 增加间距从70px到90px
+    }
 
-    case 'cluster':
-      // 簇状排列，更自然
+    case 'cluster': {
+      // 簇状排列，更自然（已经围绕原点），增加半径提供更多空间
       const angle = (index / total) * Math.PI * 2
-      const radius = 50 + total * 2
+      const radius = 80 + total * 3  // 增加半径提供更多空间
       return {
         x: Math.cos(angle) * radius,
         y: Math.sin(angle) * radius,
       }
+    }
   }
 }
 
 // 生成图案数组
 export function generatePatterns(count: number, complexityLevel: number): Pattern[] {
   const complexity = PATTERN_COMPLEXITIES[complexityLevel as 1 | 2 | 3]
-  const theme = selectThemeBasedOnDifficulty(complexityLevel)
 
   const patterns: Pattern[] = []
 
   for (let i = 0; i < count; i++) {
+    // 为每个图案随机选择主题，增加图案多样性
+    const theme = selectThemeBasedOnDifficulty(complexityLevel)
+
     const pattern: Pattern = {
       id: `pattern-${i}`,
       type: theme,

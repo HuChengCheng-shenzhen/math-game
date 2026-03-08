@@ -44,18 +44,19 @@ export const useSound = (initialConfig: Partial<SoundConfig> = {}) => {
   useEffect(() => {
     if (typeof window === 'undefined') return
 
+    const currentAudioRefs = audioRefs.current
     Object.entries(SOUND_URLS).forEach(([type, url]) => {
       const audio = new Audio(url)
       audio.volume = config.volume
-      audioRefs.current.set(type as SoundType, audio)
+      currentAudioRefs.set(type as SoundType, audio)
     })
 
     return () => {
-      audioRefs.current.forEach((audio) => {
+      currentAudioRefs.forEach((audio) => {
         audio.pause()
         audio.src = ''
       })
-      audioRefs.current.clear()
+      currentAudioRefs.clear()
     }
   }, [config.volume])
 
@@ -118,6 +119,7 @@ export const useSimpleSound = () => {
     if (!enabled || typeof window === 'undefined') return
 
     // 使用Web Audio API创建简单音效
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)()
     const oscillator = audioContext.createOscillator()
     const gainNode = audioContext.createGain()

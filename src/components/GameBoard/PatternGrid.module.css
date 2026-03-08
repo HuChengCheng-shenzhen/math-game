@@ -2,12 +2,46 @@
 .patternGrid {
   position: relative;
   width: 100%;
-  height: 500px; /* 增加高度以容纳更多行图案和更大间距 */
-  margin: 30px 0; /* 减少边距，为更多图案腾出空间 */
+  height: 650px; /* 大幅增加高度以容纳更大间距的图案 */
+  margin: 30px 0;
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: visible;
+  /* 添加淡化的网格背景，帮助对齐和计数 */
+  background-image:
+    linear-gradient(to right, rgba(255, 152, 0, 0.1) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 152, 0, 0.1) 1px, transparent 1px);
+  background-size: 70px 70px; /* 网格单元格大小 */
+  background-position: center center;
+}
+
+/* 网格背景 */
+.gridBackground {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  opacity: 0.1;
+  z-index: 0;
+}
+
+.gridLine {
+  position: absolute;
+  background: #FF9800;
+}
+
+.gridLine.horizontal {
+  width: 100%;
+  height: 1px;
+  left: 0;
+}
+
+.gridLine.vertical {
+  width: 1px;
+  height: 100%;
+  top: 0;
 }
 
 /* 图案容器（居中包装） */
@@ -16,6 +50,7 @@
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+  z-index: 1;
 }
 
 /* 单个图案 */
@@ -89,9 +124,17 @@
 /* 选中状态 */
 .patternSelected {
   border-color: #4CAF50;
-  border-width: 4px;
-  box-shadow: 0 8px 25px rgba(76, 175, 80, 0.4);
-  z-index: 2;
+  border-width: 5px;
+  box-shadow: 0 12px 35px rgba(76, 175, 80, 0.6);
+  z-index: 10;
+  transform: scale(1.05) !important;
+  background: linear-gradient(135deg, #FFFFFF, #E8F5E9);
+  animation: selectedPulse 1.5s infinite;
+}
+
+@keyframes selectedPulse {
+  0%, 100% { box-shadow: 0 12px 35px rgba(76, 175, 80, 0.6); }
+  50% { box-shadow: 0 12px 45px rgba(76, 175, 80, 0.8); }
 }
 
 /* 高亮状态 */
@@ -165,16 +208,17 @@
 /* 响应式设计 */
 @media (max-width: 768px) {
   .patternGrid {
-    height: 350px; /* 增加高度以适应更多行和更大间距 */
+    height: 500px; /* 增加高度以适应更大间距 */
+    background-size: 60px 60px; /* 调整网格大小 */
   }
 
   .pattern {
-    width: 50px;
-    height: 50px;
+    width: 55px; /* 增加触摸目标大小 */
+    height: 55px;
   }
 
   .patternEmoji {
-    font-size: 26px;
+    font-size: 28px;
   }
 
   .countText {
@@ -189,16 +233,17 @@
 
 @media (max-width: 480px) {
   .patternGrid {
-    height: 300px; /* 增加高度以适应更多行和更大间距 */
+    height: 450px; /* 增加高度以适应更大间距 */
+    background-size: 55px 55px; /* 调整网格大小 */
   }
 
   .pattern {
-    width: 45px;
-    height: 45px;
+    width: 50px; /* 确保触摸目标足够大 */
+    height: 50px;
   }
 
   .patternEmoji {
-    font-size: 22px;
+    font-size: 24px;
   }
 
   .countText {

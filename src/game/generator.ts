@@ -38,29 +38,31 @@ function calculatePosition(
 ): { x: number; y: number } {
   switch (arrangement) {
     case 'simple': {
-      // 简单线性排列，整体水平居中，增加间距确保图案分开
-      const totalWidth = (total - 1) * 120  // 增加间距从100px到120px
+      // 简单线性排列，整体水平居中，大幅增加间距确保图案分开
+      const spacing = 160  // 大幅增加间距，确保图案不重叠
+      const totalWidth = (total - 1) * spacing
       const startX = -totalWidth / 2
-      return { x: startX + index * 120, y: 0 }
+      return { x: startX + index * spacing, y: 0 }
     }
 
     case 'grid': {
-      // 网格排列（每行最多5个），整体居中，增加间距确保图案分开
+      // 网格排列（每行最多5个），整体居中，大幅增加间距确保图案分开
       const cols = Math.min(5, Math.ceil(Math.sqrt(total)))
       const rows = Math.ceil(total / cols)
-      const gridWidth = (cols - 1) * 100  // 增加间距从90px到100px
-      const gridHeight = (rows - 1) * 100  // 增加间距从90px到100px
+      const gridSpacing = 140  // 大幅增加间距，确保图案不重叠
+      const gridWidth = (cols - 1) * gridSpacing
+      const gridHeight = (rows - 1) * gridSpacing
       const gridStartX = -gridWidth / 2
       const gridStartY = -gridHeight / 2
       const row = Math.floor(index / cols)
       const col = index % cols
-      return { x: gridStartX + col * 100, y: gridStartY + row * 100 }  // 增加间距从90px到100px
+      return { x: gridStartX + col * gridSpacing, y: gridStartY + row * gridSpacing }
     }
 
     case 'cluster': {
-      // 簇状排列，更自然（已经围绕原点），增加半径确保图案分开
+      // 簇状排列，更自然（已经围绕原点），大幅增加半径确保图案分开
       const angle = (index / total) * Math.PI * 2
-      const radius = 100 + total * 4  // 增加半径提供更多空间
+      const radius = 120 + total * 6  // 大幅增加半径，提供充足空间
       return {
         x: Math.cos(angle) * radius,
         y: Math.sin(angle) * radius,
@@ -72,6 +74,18 @@ function calculatePosition(
 // 生成图案数组
 export function generatePatterns(count: number, complexityLevel: number): Pattern[] {
   const complexity = PATTERN_COMPLEXITIES[complexityLevel as 1 | 2 | 3]
+
+  // 根据图案数量智能选择最佳布局
+  let arrangement: 'simple' | 'grid' | 'cluster' = complexity.characteristics.arrangement
+
+  // 覆盖默认布局，根据数量优化
+  if (count <= 5) {
+    arrangement = 'simple'  // 少量图案使用线性排列，最清晰
+  } else if (count <= 12) {
+    arrangement = 'grid'    // 中等数量使用网格排列
+  } else {
+    arrangement = 'cluster' // 大量图案使用环形排列，避免过度拥挤
+  }
 
   const patterns: Pattern[] = []
 
@@ -85,7 +99,7 @@ export function generatePatterns(count: number, complexityLevel: number): Patter
       variant: selectVariant(theme, complexity.characteristics.maxVariants),
       hasDetails: complexity.characteristics.hasDetails,
       animationType: selectAnimationType(complexity.characteristics.animationComplexity),
-      position: calculatePosition(i, count, complexity.characteristics.arrangement),
+      position: calculatePosition(i, count, arrangement),
     }
     patterns.push(pattern)
   }

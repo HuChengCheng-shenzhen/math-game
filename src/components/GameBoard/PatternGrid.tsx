@@ -40,21 +40,21 @@ const PatternGrid: React.FC<PatternGridProps> = ({
     const variants: Record<string, AnimationVariant> = {
       bounce: {
         animate: {
-          y: [0, -15, 0],
+          y: [0, -8, 0], // 减小幅度，防止重叠
         },
         transition: {
-          duration: 0.6,
+          duration: 0.8,
           repeat: Infinity,
           repeatType: 'reverse' as const,
         },
       },
       float: {
         animate: {
-          y: [0, -10, 0],
-          rotate: [0, 5, -5, 0],
+          y: [0, -6, 0], // 减小幅度
+          rotate: [0, 3, -3, 0], // 减小旋转
         },
         transition: {
-          duration: 2,
+          duration: 2.5,
           repeat: Infinity,
           repeatType: 'reverse' as const,
         },
@@ -71,21 +71,21 @@ const PatternGrid: React.FC<PatternGridProps> = ({
       },
       pulse: {
         animate: {
-          scale: [1, 1.1, 1],
+          scale: [1, 1.05, 1], // 减小缩放，防止重叠
         },
         transition: {
-          duration: 1,
+          duration: 1.2,
           repeat: Infinity,
           repeatType: 'reverse' as const,
         },
       },
       wave: {
         animate: {
-          y: [0, -5, 0],
-          rotate: [0, 10, -10, 0],
+          y: [0, -4, 0], // 减小幅度
+          rotate: [0, 6, -6, 0], // 减小旋转
         },
         transition: {
-          duration: 1.5,
+          duration: 1.8,
           repeat: Infinity,
           repeatType: 'reverse' as const,
         },

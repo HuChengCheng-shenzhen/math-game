@@ -38,29 +38,29 @@ function calculatePosition(
 ): { x: number; y: number } {
   switch (arrangement) {
     case 'simple': {
-      // 简单线性排列，整体水平居中，增加间距
-      const totalWidth = (total - 1) * 100  // 增加间距从80px到100px
+      // 简单线性排列，整体水平居中，增加间距确保图案分开
+      const totalWidth = (total - 1) * 120  // 增加间距从100px到120px
       const startX = -totalWidth / 2
-      return { x: startX + index * 100, y: 0 }
+      return { x: startX + index * 120, y: 0 }
     }
 
     case 'grid': {
-      // 网格排列（每行最多5个），整体居中，增加间距方便辨认
+      // 网格排列（每行最多5个），整体居中，增加间距确保图案分开
       const cols = Math.min(5, Math.ceil(Math.sqrt(total)))
       const rows = Math.ceil(total / cols)
-      const gridWidth = (cols - 1) * 90  // 增加间距从70px到90px
-      const gridHeight = (rows - 1) * 90  // 增加间距从70px到90px
+      const gridWidth = (cols - 1) * 100  // 增加间距从90px到100px
+      const gridHeight = (rows - 1) * 100  // 增加间距从90px到100px
       const gridStartX = -gridWidth / 2
       const gridStartY = -gridHeight / 2
       const row = Math.floor(index / cols)
       const col = index % cols
-      return { x: gridStartX + col * 90, y: gridStartY + row * 90 }  // 增加间距从70px到90px
+      return { x: gridStartX + col * 100, y: gridStartY + row * 100 }  // 增加间距从90px到100px
     }
 
     case 'cluster': {
-      // 簇状排列，更自然（已经围绕原点），增加半径提供更多空间
+      // 簇状排列，更自然（已经围绕原点），增加半径确保图案分开
       const angle = (index / total) * Math.PI * 2
-      const radius = 80 + total * 3  // 增加半径提供更多空间
+      const radius = 100 + total * 4  // 增加半径提供更多空间
       return {
         x: Math.cos(angle) * radius,
         y: Math.sin(angle) * radius,
@@ -98,14 +98,17 @@ export function generateOptions(correctNumber: number, config: DifficultyConfig)
   const { minNumber, maxNumber } = config
 
   // 确保选项是3个连续数字，正确答案在其中
-  const start = Math.max(minNumber, correctNumber - 1) // 确保不小于最小数字
-  // 计算end但不使用，仅用于边界检查概念
-  Math.min(maxNumber, correctNumber + 1) // 确保不大于最大数字
+  let optionsStart = Math.max(minNumber, correctNumber - 1) // 确保不小于最小数字
 
-  // 如果靠近边界，调整起始位置
-  let optionsStart = start
-  if (correctNumber === minNumber) optionsStart = minNumber
-  if (correctNumber === maxNumber) optionsStart = Math.max(minNumber, maxNumber - 2)
+  // 确保选项不超过最大数字
+  if (optionsStart + 2 > maxNumber) {
+    optionsStart = Math.max(minNumber, maxNumber - 2)
+  }
+
+  // 如果正确答案在最小边界，确保选项从最小数字开始
+  if (correctNumber === minNumber) {
+    optionsStart = minNumber
+  }
 
   return [optionsStart, optionsStart + 1, optionsStart + 2]
 }

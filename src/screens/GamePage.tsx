@@ -2,7 +2,6 @@ import React, { useReducer, useEffect, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Header from '../components/Layout/Header'
 import Footer from '../components/Layout/Footer'
-import NumberDisplay from '../components/GameBoard/NumberDisplay'
 import PatternGrid from '../components/GameBoard/PatternGrid'
 import OptionButtons from '../components/GameBoard/OptionButtons'
 import ErrorHint from '../components/GameBoard/ErrorHint'
@@ -101,12 +100,12 @@ const GamePage: React.FC = () => {
       <main className={styles.gameContent}>
         {/* 游戏区域 */}
         <div className={styles.gameArea}>
-          {/* 数字显示 */}
-          <NumberDisplay
+          {/* 数字显示（已隐藏，让玩家自己数图案） */}
+          {/* <NumberDisplay
             number={state.currentNumber}
             isCorrect={state.isCorrect}
             showHint={state.showHint}
-          />
+          /> */}
 
           {/* 图案网格 */}
           <PatternGrid

@@ -56,6 +56,37 @@ chmod +x production-deploy.sh
 - 🔧 **进程管理**：使用PM2管理，支持自动重启
 - 💾 **持久化**：配置开机自启，服务器重启后自动恢复
 
+### 🔧 生产环境管理
+
+如果PM2安装失败（需要sudo权限），我们提供了备用管理脚本：
+
+```bash
+# 给予执行权限
+chmod +x manage-production.sh
+
+# 启动生产服务（端口3001）
+./manage-production.sh start
+
+# 查看服务状态
+./manage-production.sh status
+
+# 停止服务
+./manage-production.sh stop
+
+# 重启服务
+./manage-production.sh restart
+
+# 查看日志
+./manage-production.sh logs tail
+```
+
+**管理脚本功能**：
+- ✅ **启动/停止/重启**：管理生产服务生命周期
+- ✅ **状态监控**：检查服务运行状态和资源使用
+- ✅ **日志管理**：实时查看和分析日志
+- ✅ **自动构建**：必要时自动重新构建项目
+- ✅ **端口检查**：确保端口3001可用
+
 ### 📦 其他部署选项
 如果您需要云端部署，请参考以下选项：
 
